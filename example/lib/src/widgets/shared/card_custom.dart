@@ -22,11 +22,11 @@ class CardCustom extends StatelessWidget {
         selectedColor: Colors.grey[300],
         title: Text(
           title,
-          maxLines: 1,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
-        subtitle: Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis),
+        subtitle: Text(subtitle, maxLines: 2, overflow: TextOverflow.ellipsis),
         onTap: onTap,
         trailing: IconButton(
           icon: const Icon(Icons.arrow_right),
