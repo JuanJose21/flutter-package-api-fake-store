@@ -32,4 +32,37 @@ class CartsHttpService {
       return Left('Exception - getCartByUser: $e');
     }
   }
+
+  /// Add a product to a cart
+  /// Return a list of [CartModel] if success
+  /// Return a string if error
+  ///
+  /// Example:
+  /// ```dart
+  /// final result = await cartsHttpService.addProductCart(cart);
+  /// result.fold(
+  ///   (error) => print(error),
+  ///   (carts) => print(carts),
+  /// );
+  Future<Either<String, List<CartModel>>> addProductCart(CartModel cart) async {
+    try {
+      final uri = Uri.parse(baseUrl + endPointCarts);
+      final response = await http.patch(
+        uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: cartModelToJson([cart]),
+      );
+
+      if (response.statusCode == 200) {
+        final List<CartModel> carts = cartModelFromJson(response.body);
+        return Right(carts);
+      } else {
+        return Left("Error!!! ${response.statusCode}");
+      }
+    } catch (e) {
+      return Left('Exception - getCartByUser: $e');
+    }
+  }
 }

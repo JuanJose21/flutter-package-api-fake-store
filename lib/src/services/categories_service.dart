@@ -47,7 +47,7 @@ class CategoriesHttpService {
   ///   (products) => print(products),
   /// );
   /// ```
-  Future<Either<String, List<ProductModel>>> getCategorieProducts(
+  Future<Either<String, List<ProductModel>>> getCategoryProducts(
       CategoryEnum category) async {
     try {
       final uri = Uri.parse(baseUrl + endPointCategories + category.toString());

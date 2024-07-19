@@ -12,18 +12,16 @@ String cartModelToJson(List<CartModel> data) =>
 
 class CartModel {
   CartModel({
-    required this.id,
+    this.id,
     required this.userId,
     required this.date,
     required this.products,
-    required this.v,
   });
 
-  int id;
+  int? id;
   int userId;
   DateTime date;
   List<ProductCartModel> products;
-  int v;
 
   /// Convert a json to a CartModel object
   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
@@ -32,7 +30,6 @@ class CartModel {
         date: DateTime.parse(json["date"]),
         products: List<ProductCartModel>.from(
             json["products"].map((x) => ProductCartModel.fromJson(x))),
-        v: json["__v"],
       );
 
   /// Convert a CartModel object to a json
@@ -41,6 +38,5 @@ class CartModel {
         "userId": userId,
         "date": date.toIso8601String(),
         "products": List<dynamic>.from(products.map((x) => x.toJson())),
-        "__v": v,
       };
 }
