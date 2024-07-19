@@ -11,13 +11,13 @@ class CartsHttpService {
   ///
   /// Example:
   /// ```dart
-  /// final result = await cartsHttpService.getCart('1');
+  /// final result = await cartsHttpService.getCartByUser('1');
   /// result.fold(
   ///   (error) => print(error),
   ///   (carts) => print(carts),
   /// );
   /// ```
-  Future<Either<String, List<CartModel>>> getCart(String idUser) async {
+  Future<Either<String, List<CartModel>>> getCartByUser(String idUser) async {
     try {
       final uri = Uri.parse(baseUrl + endPointCarts + idUser);
       final response = await http.get(uri);
@@ -29,7 +29,7 @@ class CartsHttpService {
         return Left("Error!!! ${response.statusCode}");
       }
     } catch (e) {
-      return Left('Exception - getCart: $e');
+      return Left('Exception - getCartByUser: $e');
     }
   }
 }
