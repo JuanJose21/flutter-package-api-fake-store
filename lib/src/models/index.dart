@@ -7,3 +7,5 @@ export 'user_model.dart';
 export 'name_model.dart';
 export 'address_model.dart';
 export 'geolocation_model.dart';
+export 'auth_model.dart';
+export 'token_model.dart';
