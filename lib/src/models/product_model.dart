@@ -11,18 +11,18 @@ List<ProductModel> productsModelFromJson(String str) => List<ProductModel>.from(
 String productsModelToJson(List<ProductModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-/// Convert a json to a list of type [ProductModel]
+/// Convert a json to a single [ProductModel]
 ProductModel productModelFromJson(String str) =>
-    ProductModel.fromJsonAdd(json.decode(str));
+    ProductModel.fromJson(json.decode(str));
 
-/// Convert a list of [ProductModel] to a json
+/// Convert a single [ProductModel] to a json
 String productModelToJson(ProductModel data) => json.encode(data.toJson());
 
-/// Convert a json to a list of type [ProductModel]
+/// Convert a json to a [ProductModel] for adding a product
 ProductModel productAddModelFromJson(String str) =>
     ProductModel.fromJsonAdd(json.decode(str));
 
-/// Convert a list of [ProductModel] to a json
+/// Convert a [ProductModel] for adding a product to a json
 String productAddModelToJson(ProductModel data) =>
     json.encode(data.toAddJson());
 
@@ -59,7 +59,7 @@ class ProductModel {
             : null,
       );
 
-  /// Convert a json to a [ProductModel] object to add a product
+  /// Convert a json to a [ProductModel] object for adding a product
   factory ProductModel.fromJsonAdd(Map<String, dynamic> json) => ProductModel(
         title: json["title"],
         price: json["price"]?.toDouble(),
@@ -80,7 +80,7 @@ class ProductModel {
         "rating": rating?.toJson(),
       };
 
-  /// Convert a [ProductModel] object to a json to add a product
+  /// Convert a [ProductModel] object to a json for adding a product
   Map<String, dynamic> toAddJson() => {
         "title": title,
         "price": price,
