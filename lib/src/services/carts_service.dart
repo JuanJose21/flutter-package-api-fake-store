@@ -39,30 +39,31 @@ class CartsHttpService {
   ///
   /// Example:
   /// ```dart
-  /// final result = await cartsHttpService.addProductCart(cart);
+  /// final result = await cartsHttpService.addUpdateProductCart(idcart, cart);
   /// result.fold(
   ///   (error) => print(error),
   ///   (carts) => print(carts),
   /// );
-  Future<Either<String, List<CartModel>>> addProductCart(CartModel cart) async {
+  Future<Either<String, CartModel>> addUpdateProductCart(
+      String idCart, CartModel cart) async {
     try {
-      final uri = Uri.parse(baseUrl + endPointCarts);
+      final uri = Uri.parse('$baseUrl$endPointCarts/$idCart');
       final response = await http.patch(
         uri,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: cartModelToJson([cart]),
+        body: cartProductModelToJson(cart),
       );
 
       if (response.statusCode == 200) {
-        final List<CartModel> carts = cartModelFromJson(response.body);
+        final CartModel carts = cartProductModelFromJson(response.body);
         return Right(carts);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
-      return Left('Exception - getCartByUser: $e');
+      return Left('Exception - addUpdateProductCart: $e');
     }
   }
 }

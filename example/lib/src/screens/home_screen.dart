@@ -41,10 +41,10 @@ class HomeScreen extends StatelessWidget {
         'screen': const CartScreen(),
       },
       {
-        'title': 'Agregar / Actualizar producto al carrito',
+        'title': 'Agregar / Actualizar producto del carrito',
         'subtitle':
             'En esta pantalla podrás agregar o actualizar un producto del carrito',
-        'screen': const AddProductScreen(),
+        'screen': const AddUpdateCartScreen(),
       },
       {
         'title': 'Obtener productos de una categoría',
