@@ -26,7 +26,7 @@ class CartsHttpService {
         final List<CartModel> carts = cartModelFromJson(response.body);
         return Right(carts);
       } else {
-        return Left("Error!!! ${response.statusCode}");
+        return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
       return Left('Exception - getCartByUser: $e');
@@ -59,7 +59,7 @@ class CartsHttpService {
         final List<CartModel> carts = cartModelFromJson(response.body);
         return Right(carts);
       } else {
-        return Left("Error!!! ${response.statusCode}");
+        return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
       return Left('Exception - getCartByUser: $e');

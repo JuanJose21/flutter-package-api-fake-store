@@ -28,7 +28,7 @@ class UsersHttpService {
         final UserModel user = userModelFromJson(response.body);
         return Right(user);
       } else {
-        return Left("Error!!! ${response.statusCode}");
+        return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
       return Left('Exception - getUser: $e');
@@ -80,7 +80,7 @@ class UsersHttpService {
         final UserModel user = userModelFromJson(response.body);
         return Right(user);
       } else {
-        return Left("Error!!! ${response.statusCode}");
+        return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
       return Left('Exception - getUser: $e');

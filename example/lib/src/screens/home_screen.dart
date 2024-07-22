@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:example/src/widgets/shared/card_custom.dart';
 import 'package:example/src/widgets/shared/custom_app_bar.dart';
-import 'package:flutter/material.dart';
 import 'package:example/src/screens/login_screen.dart';
 import 'package:example/src/screens/cart_screen.dart';
 import 'package:example/src/screens/add_product_screen.dart';
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  /// Genera la lista de widgets CardCustom.
+  /// Generates a list of cards with the data of the screens to navigate
   List<Widget> _buildCardList(BuildContext context) {
     final List<Map<String, dynamic>> cardData = [
       {

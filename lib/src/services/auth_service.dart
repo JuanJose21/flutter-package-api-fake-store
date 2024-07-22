@@ -9,6 +9,15 @@ class AuthHttpService {
   /// Login user by username and password
   /// Return a string token if success
   /// Return a string if error
+  ///
+  /// Example:
+  /// ```dart
+  /// final result = await authHttpService.login(AuthPostModel (username: 'admin', password: 'admin'));
+  /// result.fold(
+  ///   (error) => print(error),
+  ///   (token) => print(token),
+  /// );
+  /// ```
   Future<Either<String, TokenModel>> login(
       AuthPostModel userCredentials) async {
     try {
@@ -21,11 +30,13 @@ class AuthHttpService {
         body: authPostModelToJson(userCredentials),
       );
 
+      print(response.body);
+
       if (response.statusCode == 200) {
         final TokenModel token = tokenModelFromJson(response.body);
         return Right(token);
       } else {
-        return Left("Error!!! ${response.statusCode}");
+        return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
       return Left('Exception - getUser: $e');
