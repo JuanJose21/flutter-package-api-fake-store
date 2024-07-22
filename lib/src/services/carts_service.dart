@@ -19,11 +19,11 @@ class CartsHttpService {
   /// ```
   Future<Either<String, List<CartModel>>> getCartByUser(String idUser) async {
     try {
-      final uri = Uri.parse(baseUrl + endPointCarts + idUser);
+      final uri = Uri.parse('$baseUrl$endPointCarts$endPointUser/$idUser');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
-        final List<CartModel> carts = cartModelFromJson(response.body);
+        final carts = cartModelFromJson(response.body);
         return Right(carts);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");

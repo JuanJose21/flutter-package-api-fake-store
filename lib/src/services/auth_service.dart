@@ -30,8 +30,6 @@ class AuthHttpService {
         body: authPostModelToJson(userCredentials),
       );
 
-      print(response.body);
-
       if (response.statusCode == 200) {
         final TokenModel token = tokenModelFromJson(response.body);
         return Right(token);
