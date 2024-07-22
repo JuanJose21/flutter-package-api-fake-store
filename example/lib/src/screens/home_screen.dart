@@ -33,45 +33,45 @@ class HomeScreen extends StatelessWidget {
       {
         'title': 'Iniciar sesión',
         'subtitle': 'En esta pantalla podrás ver el token al iniciar sesión',
-        'screen': LoginScreen(),
+        'screen': const LoginScreen(),
       },
       {
         'title': 'Obtener carrito',
         'subtitle': 'En esta pantalla podrás ver el carrito de un usuario',
-        'screen': CartScreen(),
+        'screen': const CartScreen(),
       },
       {
         'title': 'Agregar / Actualizar producto al carrito',
         'subtitle':
             'En esta pantalla podrás agregar o actualizar un producto del carrito',
-        'screen': AddProductScreen(),
+        'screen': const AddProductScreen(),
       },
       {
         'title': 'Obtener productos de una categoría',
         'subtitle':
             'En esta pantalla podrás ver los productos de una categoría',
-        'screen': CategoryProductsScreen(),
+        'screen': const CategoryProductsScreen(),
       },
       {
         'title': 'Obtener todos los productos',
         'subtitle':
             'En esta pantalla podrás ver todos los productos de la tienda',
-        'screen': AllProductsScreen(),
+        'screen': const AllProductsScreen(),
       },
       {
         'title': 'Obtener un producto',
         'subtitle': 'En esta pantalla podrás ver un producto en específico',
-        'screen': ProductScreen(),
+        'screen': const ProductScreen(),
       },
       {
         'title': 'Obtener un usuario',
         'subtitle': 'En esta pantalla podrás ver un usuario en específico',
-        'screen': UserScreen(),
+        'screen': const UserScreen(),
       },
       {
         'title': 'Agregar un usuario',
         'subtitle': 'En esta pantalla podrás agregar un usuario a la tienda',
-        'screen': AddUserScreen(),
+        'screen': const AddUserScreen(),
       },
     ];
 
