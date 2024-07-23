@@ -19,9 +19,9 @@ class UsersHttpService {
   ///   (user) => print(user),
   /// );
   /// ```
-  Future<Either<String, UserModel>> getUser(String idUser) async {
+  Future<Either<String, UserModel>> getUser(int idUser) async {
     try {
-      final uri = Uri.parse(baseUrl + endPointUsers + idUser);
+      final uri = Uri.parse('$baseUrl$endPointUsers/$idUser');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
@@ -42,7 +42,6 @@ class UsersHttpService {
   /// Example:
   /// ```dart
   /// final result = await usersHttpService.addUser(UserModel(
-  ///   id: 1,
   ///   email: 'mail@mail.com'
   ///   username: 'user1',
   ///   password: '123456'
@@ -51,13 +50,13 @@ class UsersHttpService {
   ///     last: 'One',
   ///   ),
   ///   address: AddressModel(
-  ///     street: 'Street 1',
-  ///     suite: 'Suite 1',
   ///     city: 'City 1',
+  ///     street: 'Street 1',
+  ///     number: 1,
   ///     zipcode: 'Zipcode 1',
   ///     geo: GeoModel(
   ///       lat: 'Lat 1',
-  ///       lng: 'Lng 1',
+  ///       long: 'Lng 1',
   ///     ),
   ///   ),
   ///   phone: 'Phone 1',
