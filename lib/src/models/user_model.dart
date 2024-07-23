@@ -7,23 +7,28 @@ UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
 String userModelToJson(UserModel data) => json.encode(data.toJson());
 
+UserModel userAddModelFromJson(String str) =>
+    UserModel.fromJsonId(json.decode(str));
+
+String userAddModelToJson(UserModel data) => json.encode(data.toJsonAdd());
+
 class UserModel {
-  int id;
-  String email;
-  String username;
-  String password;
-  NameModel name;
-  AddressModel address;
-  String phone;
+  int? id;
+  String? email;
+  String? username;
+  String? password;
+  NameModel? name;
+  AddressModel? address;
+  String? phone;
 
   UserModel({
-    required this.id,
-    required this.email,
-    required this.username,
-    required this.password,
-    required this.name,
-    required this.address,
-    required this.phone,
+    this.id,
+    this.email,
+    this.username,
+    this.password,
+    this.name,
+    this.address,
+    this.phone,
   });
 
   /// Convert a json to a UserModel object
@@ -43,8 +48,32 @@ class UserModel {
         "email": email,
         "username": username,
         "password": password,
-        "name": name.toJson(),
-        "address": address.toJson(),
+        "name": name?.toJson(),
+        "address": address?.toJson(),
+        "phone": phone,
+      };
+
+  /// Convert a json to a UserModel object
+  factory UserModel.fromJsonAdd(Map<String, dynamic> json) => UserModel(
+        email: json["email"],
+        username: json["username"],
+        password: json["password"],
+        name: NameModel.fromJson(json["name"]),
+        address: AddressModel.fromJson(json["address"]),
+        phone: json["phone"],
+      );
+
+  factory UserModel.fromJsonId(Map<String, dynamic> json) => UserModel(
+        id: json["id"],
+      );
+
+  /// Convert a UserModel object to a json
+  Map<String, dynamic> toJsonAdd() => {
+        "email": email,
+        "username": username,
+        "password": password,
+        "name": name?.toJson(),
+        "address": address?.toJson(),
         "phone": phone,
       };
 }

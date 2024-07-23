@@ -73,16 +73,16 @@ class UsersHttpService {
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
-          body: jsonEncode(user));
+          body: userAddModelToJson(user));
 
       if (response.statusCode == 200) {
-        final UserModel user = userModelFromJson(response.body);
+        final UserModel user = userAddModelFromJson(response.body);
         return Right(user);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");
       }
     } catch (e) {
-      return Left('Exception - getUser: $e');
+      return Left('Exception - addUser: $e');
     }
   }
 }
