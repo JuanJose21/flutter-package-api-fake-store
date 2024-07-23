@@ -48,10 +48,11 @@ class _AllProductsScreen extends State<AllProductsScreen> {
     });
   }
 
-  void redirectProductScreen(ProductModel product) {
+  void redirectProductScreen(int productId) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProductScreen(product: product)),
+      MaterialPageRoute(
+          builder: (context) => ProductScreen(productId: productId)),
     );
   }
 
@@ -81,7 +82,7 @@ class _AllProductsScreen extends State<AllProductsScreen> {
                             title: product.title,
                             price: product.price.toString(),
                             image: product.image,
-                            onTap: () => redirectProductScreen(product));
+                            onTap: () => redirectProductScreen(product.id!));
                       },
                     )
                   : const Center(
