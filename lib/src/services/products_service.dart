@@ -40,15 +40,15 @@ class ProductsHttpService {
   ///
   /// Example:
   /// ```dart
-  /// final result = await productsHttpService.getProduct('1');
+  /// final result = await productsHttpService.getProduct(1);
   /// result.fold(
   ///   (error) => print(error),
   ///   (product) => print(product),
   /// );
   /// ```
-  Future<Either<String, ProductModel>> getProduct(String id) async {
+  Future<Either<String, ProductModel>> getProduct(int id) async {
     try {
-      final uri = Uri.parse(baseUrl + endPointProducts + id);
+      final uri = Uri.parse('$baseUrl$endPointProducts/$id');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
