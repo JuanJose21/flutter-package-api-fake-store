@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_package_api_fake_store/flutter_package_api_fake_store.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen({super.key});
+  final ProductModel product;
+
+  const ProductScreen({required this.product, super.key});
 
   @override
   Widget build(BuildContext context) {
