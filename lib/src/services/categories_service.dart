@@ -50,7 +50,9 @@ class CategoriesHttpService {
   Future<Either<String, List<ProductModel>>> getCategoryProducts(
       CategoryEnum category) async {
     try {
-      final uri = Uri.parse(baseUrl + endPointCategories + category.toString());
+      final categoryReverse = categoryValues.reverse[category];
+      final uri = Uri.parse(
+          '$baseUrl$endPointProducts$endPointCategory/$categoryReverse');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
