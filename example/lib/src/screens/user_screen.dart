@@ -1,17 +1,118 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_package_api_fake_store/flutter_package_api_fake_store.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
   const UserScreen({super.key});
+
+  @override
+  State<UserScreen> createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
+  final UsersHttpService _userHttpService = UsersHttpService();
+  UserModel? _user;
+  String? _errorMessage;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUser();
+  }
+
+  void _fetchUser() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    final result = await _userHttpService.getUser(2);
+
+    result.fold(
+      (error) {
+        setState(() {
+          _errorMessage = error;
+        });
+      },
+      (userInfo) {
+        setState(() {
+          _user = userInfo;
+        });
+      },
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Obtener un usuario'),
-      ),
-      body: const Center(
-        child: Text('Pantalla de Obtener un usuario'),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Perfil de usuario'),
+        ),
+        body: _isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : _errorMessage != null
+                ? Center(
+                    child: Text(
+                      _errorMessage!,
+                      style: const TextStyle(color: Colors.red),
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          '${_user?.name.firstname} ${_user?.name.lastname}',
+                          style: const TextStyle(
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 16.0),
+                        Text(
+                          'Email: ${_user?.email}',
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          'Username: ${_user?.username}',
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          'Phone: ${_user?.phone}',
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        const SizedBox(height: 16.0),
+                        const Text(
+                          'Address:',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          '${_user?.address.street}, ${_user?.address.city}, ${_user?.address.zipcode}',
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ));
   }
 }
