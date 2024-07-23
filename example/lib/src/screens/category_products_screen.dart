@@ -1,3 +1,5 @@
+import 'package:example/src/screens/product_screen.dart';
+import 'package:example/src/widgets/shared/card_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package_api_fake_store/flutter_package_api_fake_store.dart';
 
@@ -47,6 +49,13 @@ class _CategoryProductsScreen extends State<CategoryProductsScreen> {
     });
   }
 
+  void redirectProductScreen(ProductModel product) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ProductScreen(product: product)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,17 +78,11 @@ class _CategoryProductsScreen extends State<CategoryProductsScreen> {
                       itemCount: _categoryItems.length,
                       itemBuilder: (context, index) {
                         final product = _categoryItems[index];
-                        return Card(
-                          child: ListTile(
-                            title: Text(product.title),
-                            subtitle: Text('\$${product.price.toString()}'),
-                            leading: Image.network(
-                              product.image,
-                              fit: BoxFit.cover,
-                              width: 50,
-                              height: 50,
-                            ),
-                          ),
+                        return CardProduct(
+                          title: product.title,
+                          price: product.price.toString(),
+                          image: product.image,
+                          onTap: () => redirectProductScreen(product),
                         );
                       },
                     )

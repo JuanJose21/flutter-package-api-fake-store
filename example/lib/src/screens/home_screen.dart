@@ -59,11 +59,6 @@ class HomeScreen extends StatelessWidget {
         'screen': const AllProductsScreen(),
       },
       {
-        'title': 'Obtener un producto',
-        'subtitle': 'En esta pantalla podrás ver un producto en específico',
-        'screen': const ProductScreen(),
-      },
-      {
         'title': 'Obtener un usuario',
         'subtitle': 'En esta pantalla podrás ver un usuario en específico',
         'screen': const UserScreen(),
