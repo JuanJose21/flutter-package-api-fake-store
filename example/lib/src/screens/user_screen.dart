@@ -69,7 +69,7 @@ class _UserScreenState extends State<UserScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          '${_user?.name.firstname} ${_user?.name.lastname}',
+                          '${_user?.name?.firstname} ${_user?.name?.lastname}',
                           style: const TextStyle(
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
@@ -106,7 +106,7 @@ class _UserScreenState extends State<UserScreen> {
                         ),
                         const SizedBox(height: 8.0),
                         Text(
-                          '${_user?.address.street}, ${_user?.address.city}, ${_user?.address.zipcode}',
+                          '${_user?.address?.street}, ${_user?.address?.city}, ${_user?.address?.zipcode}',
                           style: const TextStyle(
                             fontSize: 16.0,
                           ),
