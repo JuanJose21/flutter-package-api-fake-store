@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_package_api_fake_store/src/global/global.dart';
 import 'package:flutter_package_api_fake_store/src/models/user_model.dart';
