@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_package_api_fake_store/flutter_package_api_fake_store.dart';
 
