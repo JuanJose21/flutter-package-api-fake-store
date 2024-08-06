@@ -12,7 +12,8 @@ class _AddUpdateCartScreenState extends State<AddUpdateCartScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _productIdController = TextEditingController();
   final TextEditingController _quantityController = TextEditingController();
-  final CartsHttpService cartsHttpService = CartsHttpService();
+  final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
+      FlutterPackageApiFakeStore();
   String? _errorMessage;
   bool _isLoading = false;
 
@@ -27,7 +28,7 @@ class _AddUpdateCartScreenState extends State<AddUpdateCartScreen> {
       final quantity = int.parse(_quantityController.text);
 
       // Assuming you have a method to add/update product in cart
-      final result = await cartsHttpService.addUpdateProductCart(
+      final result = await flutterPackageApiFakeStore.addUpdateProductCart(
           '1', // Assuming a static cart ID for simplicity
           CartModel(
             userId: 1, // Assuming a static user ID for simplicity

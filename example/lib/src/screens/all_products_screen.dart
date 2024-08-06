@@ -11,7 +11,8 @@ class AllProductsScreen extends StatefulWidget {
 }
 
 class _AllProductsScreen extends State<AllProductsScreen> {
-  final ProductsHttpService productsHttpService = ProductsHttpService();
+  final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
+      FlutterPackageApiFakeStore();
   List<ProductModel> _productsItems = [];
   String? _errorMessage;
   bool _isLoading = false;
@@ -28,7 +29,7 @@ class _AllProductsScreen extends State<AllProductsScreen> {
       _errorMessage = null;
     });
 
-    final result = await productsHttpService.getProducts();
+    final result = await flutterPackageApiFakeStore.getProducts();
 
     result.fold(
       (error) {

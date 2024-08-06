@@ -19,7 +19,8 @@ class _AddUserScreen extends State<AddUserScreen> {
   final TextEditingController _streetController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _zipcodeController = TextEditingController();
-  final UsersHttpService _userHttpService = UsersHttpService();
+  final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
+      FlutterPackageApiFakeStore();
   bool _isLoading = false;
   String? _errorMessage;
 
@@ -50,7 +51,7 @@ class _AddUserScreen extends State<AddUserScreen> {
         phone: _phoneController.text,
       );
 
-      final result = await _userHttpService.addUser(newUser);
+      final result = await flutterPackageApiFakeStore.addUser(newUser);
 
       result.fold(
         (error) => setState(() => _errorMessage = error),

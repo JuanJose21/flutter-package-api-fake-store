@@ -9,7 +9,8 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  final CartsHttpService cartsHttpService = CartsHttpService();
+  final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
+      FlutterPackageApiFakeStore();
   List<CartModel> _cartItems = [];
   String? _errorMessage;
   bool _isLoading = false;
@@ -26,7 +27,7 @@ class _CartScreenState extends State<CartScreen> {
       _errorMessage = null;
     });
 
-    final result = await cartsHttpService.getCartByUser('1');
+    final result = await flutterPackageApiFakeStore.getCartByUser('1');
 
     result.fold(
       (error) {

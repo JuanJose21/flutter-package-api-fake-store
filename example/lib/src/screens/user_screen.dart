@@ -9,7 +9,8 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
-  final UsersHttpService _userHttpService = UsersHttpService();
+  final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
+      FlutterPackageApiFakeStore();
   UserModel? _user;
   String? _errorMessage;
   bool _isLoading = false;
@@ -26,7 +27,7 @@ class _UserScreenState extends State<UserScreen> {
       _errorMessage = null;
     });
 
-    final result = await _userHttpService.getUser(2);
+    final result = await flutterPackageApiFakeStore.getUser(2);
 
     result.fold(
       (error) {

@@ -12,7 +12,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final AuthHttpService authHttpService = AuthHttpService();
+  final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
+      FlutterPackageApiFakeStore();
   String? _errorMessage;
   TokenModel? _token;
   bool _isLoading = false;
@@ -28,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final username = _usernameController.text;
       final password = _passwordController.text;
 
-      final result = await authHttpService
+      final result = await flutterPackageApiFakeStore
           .login(AuthPostModel(username: username, password: password));
 
       result.fold(
