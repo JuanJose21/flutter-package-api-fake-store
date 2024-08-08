@@ -1,3 +1,9 @@
+## 0.0.5
+
+- Refactor models
+- Update services to use new models
+- Update readme.md (add description to error and response model)
+
 ## 0.0.4
 
 - Update service to use.
