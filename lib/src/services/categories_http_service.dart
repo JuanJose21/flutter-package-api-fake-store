@@ -20,7 +20,7 @@ class CategoriesHttpService {
   /// ```
   Future<Either<String, List<CategoryEnum>>> getCategories() async {
     try {
-      final uri = Uri.parse(baseUrl + endPointCategories);
+      final uri = Uri.parse(baseUrl + endPointProducts + endPointCategories);
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
