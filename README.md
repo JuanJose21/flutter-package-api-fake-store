@@ -32,52 +32,6 @@ flutter pub get
 
 ## Uso
 
-### Ejemplo Rápido
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_package_api_fake_store/flutter_package_api_fake_store.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Fake Store API Example',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Fake Store API Example')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            final products = await getProducts();
-            print(products);
-          },
-          child: Text('Fetch Products'),
-        ),
-      ),
-    );
-  }
-
-  Future<List<ProductModel>> getProducts() async {
-    final productsService = ProductsHttpService();
-    final result = await productsService.getProducts();
-    return result.fold((error) => [], (products) => products);
-  }
-}
-```
-
 ### Funcionalidades Detalladas
 
 #### Obtener Productos
@@ -91,6 +45,9 @@ result.fold(
 );
 ```
 
+- **Error**: Retorna un `String` que describe el error ocurrido, por ejemplo, un fallo en la conexión o un problema al decodificar la respuesta.
+- **Success**: Retorna una lista de `ProductModel` que contiene la información de los productos disponibles.
+
 #### Agregar un Producto al Carrito
 
 ```dart
@@ -101,6 +58,9 @@ result.fold(
   (success) => print("Producto agregado al carrito: $success"),
 );
 ```
+
+- **Error**: Retorna un `String` que describe el error ocurrido durante la operación de agregar o actualizar el producto en el carrito.
+- **Success**: Retorna un `CartModel`, que representa el estado actualizado del carrito después de la operación.
 
 #### Autenticación de Usuario
 
@@ -114,6 +74,9 @@ result.fold(
   (token) => print("Token: $token"),
 );
 ```
+
+- **Error**: Retorna un `String` que describe el error durante la autenticación, como credenciales inválidas o un fallo de conexión.
+- **Success**: Retorna un `String` que contiene el token de autenticación, el cual puede ser utilizado para realizar otras solicitudes autorizadas en la API.
 
 ## Ejemplos Adicionales
 

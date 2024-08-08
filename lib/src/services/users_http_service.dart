@@ -23,7 +23,7 @@ class UsersHttpService {
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
-        final UserModel user = userModelFromJson(response.body);
+        final UserModel user = UserModel.userModelFromJson(response.body);
         return Right(user);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");
@@ -71,10 +71,10 @@ class UsersHttpService {
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
-          body: userAddModelToJson(user));
+          body: UserModel.userAddModelToJson(user));
 
       if (response.statusCode == 200) {
-        final UserModel user = userAddModelFromJson(response.body);
+        final UserModel user = UserModel.userAddModelFromJson(response.body);
         return Right(user);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");

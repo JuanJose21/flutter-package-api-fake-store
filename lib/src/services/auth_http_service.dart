@@ -27,11 +27,11 @@ class AuthHttpService {
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: authPostModelToJson(userCredentials),
+        body: AuthPostModel.authPostModelToJson(userCredentials),
       );
 
       if (response.statusCode == 200) {
-        final TokenModel token = tokenModelFromJson(response.body);
+        final TokenModel token = TokenModel.tokenModelFromJson(response.body);
         return Right(token);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");

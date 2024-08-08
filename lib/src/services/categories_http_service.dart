@@ -25,7 +25,7 @@ class CategoriesHttpService {
 
       if (response.statusCode == 200) {
         final List<CategoryEnum> categories =
-            categoryModelFromJson(response.body);
+            CategoryModel.categoryModelFromJson(response.body);
         return Right(categories);
       } else {
         return Left('Error: ${response.statusCode}');
@@ -57,7 +57,7 @@ class CategoriesHttpService {
 
       if (response.statusCode == 200) {
         final List<ProductModel> categories =
-            productsModelFromJson(response.body);
+            ProductModel.productsModelFromJson(response.body);
         return Right(categories);
       } else {
         return Left('Error: ${response.statusCode}');

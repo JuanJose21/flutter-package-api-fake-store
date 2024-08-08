@@ -23,7 +23,7 @@ class CartsHttpService {
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
-        final carts = cartModelFromJson(response.body);
+        final carts = CartModel.cartModelFromJson(response.body);
         return Right(carts);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");
@@ -53,11 +53,12 @@ class CartsHttpService {
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: cartProductModelToJson(cart),
+        body: CartModel.cartProductModelToJson(cart),
       );
 
       if (response.statusCode == 200) {
-        final CartModel carts = cartProductModelFromJson(response.body);
+        final CartModel carts =
+            CartModel.cartProductModelFromJson(response.body);
         return Right(carts);
       } else {
         return Left("Error!!! ${response.statusCode} - ${response.body}");

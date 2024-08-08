@@ -24,7 +24,7 @@ class ProductsHttpService {
 
       if (response.statusCode == 200) {
         final List<ProductModel> products =
-            productsModelFromJson(response.body);
+            ProductModel.productsModelFromJson(response.body);
         return Right(products);
       } else {
         return Left('Error: ${response.statusCode}');
@@ -52,7 +52,8 @@ class ProductsHttpService {
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
-        final ProductModel products = productModelFromJson(response.body);
+        final ProductModel products =
+            ProductModel.productModelFromJson(response.body);
         return Right(products);
       } else {
         return Left('Error: ${response.statusCode}');
