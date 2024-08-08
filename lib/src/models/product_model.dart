@@ -1,32 +1,16 @@
 import 'dart:convert';
-
 import 'package:flutter_package_api_fake_store/src/models/rating_model.dart';
 import 'package:flutter_package_api_fake_store/src/utils/enums/enums_category.dart';
 
-/// Convert a json to a list of type [ProductModel]
-List<ProductModel> productsModelFromJson(String str) => List<ProductModel>.from(
-    json.decode(str).map((x) => ProductModel.fromJson(x)));
-
-/// Convert a list of [ProductModel] to a json
-String productsModelToJson(List<ProductModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-/// Convert a json to a single [ProductModel]
-ProductModel productModelFromJson(String str) =>
-    ProductModel.fromJson(json.decode(str));
-
-/// Convert a single [ProductModel] to a json
-String productModelToJson(ProductModel data) => json.encode(data.toJson());
-
-/// Convert a json to a [ProductModel] for adding a product
-ProductModel productAddModelFromJson(String str) =>
-    ProductModel.fromJsonAdd(json.decode(str));
-
-/// Convert a [ProductModel] for adding a product to a json
-String productAddModelToJson(ProductModel data) =>
-    json.encode(data.toAddJson());
-
 class ProductModel {
+  int? id;
+  String title;
+  double price;
+  String description;
+  CategoryEnum category;
+  String image;
+  RatingModel? rating;
+
   ProductModel({
     this.id,
     required this.title,
@@ -36,14 +20,6 @@ class ProductModel {
     required this.image,
     this.rating,
   });
-
-  int? id;
-  String title;
-  double price;
-  String description;
-  CategoryEnum category;
-  String image;
-  RatingModel? rating;
 
   /// Convert a json to a [ProductModel] object
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
@@ -88,4 +64,29 @@ class ProductModel {
         "category": categoryValues.reverse[category],
         "image": image,
       };
+
+  /// Convert a json to a list of type [ProductModel]
+  static List<ProductModel> productsModelFromJson(String str) =>
+      List<ProductModel>.from(
+          json.decode(str).map((x) => ProductModel.fromJson(x)));
+
+  /// Convert a list of [ProductModel] to a json
+  static String productsModelToJson(List<ProductModel> data) =>
+      json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+  /// Convert a json to a single [ProductModel]
+  static ProductModel productModelFromJson(String str) =>
+      ProductModel.fromJson(json.decode(str));
+
+  /// Convert a single [ProductModel] to a json
+  static String productModelToJson(ProductModel data) =>
+      json.encode(data.toJson());
+
+  /// Convert a json to a [ProductModel] for adding a product
+  static ProductModel productAddModelFromJson(String str) =>
+      ProductModel.fromJsonAdd(json.decode(str));
+
+  /// Convert a [ProductModel] for adding a product to a json
+  static String productAddModelToJson(ProductModel data) =>
+      json.encode(data.toAddJson());
 }

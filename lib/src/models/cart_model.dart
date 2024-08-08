@@ -1,35 +1,18 @@
 import 'dart:convert';
-
 import 'package:flutter_package_api_fake_store/src/models/product_cart_model.dart';
 
-/// Convert a json to a list of type [CartModel]
-List<CartModel> cartModelFromJson(String str) =>
-    List<CartModel>.from(json.decode(str).map((x) => CartModel.fromJson(x)));
-
-/// Convert a list of [CartModel] to a json
-String cartModelToJson(List<CartModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-/// Convert a json to a [CartModel]
-CartModel cartProductModelFromJson(String str) =>
-    CartModel.fromProductJson(json.decode(str));
-
-/// Convert a [CartModel] to a json
-String cartProductModelToJson(CartModel data) =>
-    json.encode(data.toProductJson());
-
 class CartModel {
+  int? id;
+  int userId;
+  DateTime date;
+  List<ProductCartModel> products;
+
   CartModel({
     this.id,
     required this.userId,
     required this.date,
     required this.products,
   });
-
-  int? id;
-  int userId;
-  DateTime date;
-  List<ProductCartModel> products;
 
   /// Convert a json to a CartModel object
   factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
@@ -62,4 +45,20 @@ class CartModel {
         "date": date.toIso8601String(),
         "products": List<dynamic>.from(products.map((x) => x.toJson())),
       };
+
+  /// Convert a json to a list of type [CartModel]
+  static List<CartModel> cartModelFromJson(String str) =>
+      List<CartModel>.from(json.decode(str).map((x) => CartModel.fromJson(x)));
+
+  /// Convert a list of [CartModel] to a json
+  static String cartModelToJson(List<CartModel> data) =>
+      json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+  /// Convert a json to a [CartModel]
+  static CartModel cartProductModelFromJson(String str) =>
+      CartModel.fromProductJson(json.decode(str));
+
+  /// Convert a [CartModel] to a json
+  static String cartProductModelToJson(CartModel data) =>
+      json.encode(data.toProductJson());
 }

@@ -1,16 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter_package_api_fake_store/src/models/address_model.dart';
 import 'package:flutter_package_api_fake_store/src/models/name_model.dart';
-
-UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
-
-String userModelToJson(UserModel data) => json.encode(data.toJson());
-
-UserModel userAddModelFromJson(String str) =>
-    UserModel.fromJsonId(json.decode(str));
-
-String userAddModelToJson(UserModel data) => json.encode(data.toJsonAdd());
 
 class UserModel {
   int? id;
@@ -76,4 +66,19 @@ class UserModel {
         "address": address?.toJson(),
         "phone": phone,
       };
+
+  /// Convert a json to a list of type [UserModel]
+  static UserModel userModelFromJson(String str) =>
+      UserModel.fromJson(json.decode(str));
+
+  /// Convert a list of [UserModel] to a json
+  static String userModelToJson(UserModel data) => json.encode(data.toJson());
+
+  /// Convert a json to a single [UserModel]
+  static UserModel userAddModelFromJson(String str) =>
+      UserModel.fromJsonId(json.decode(str));
+
+  /// Convert a single [UserModel] to a json
+  static String userAddModelToJson(UserModel data) =>
+      json.encode(data.toJsonAdd());
 }

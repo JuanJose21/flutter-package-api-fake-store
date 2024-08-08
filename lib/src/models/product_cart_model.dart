@@ -1,11 +1,11 @@
 class ProductCartModel {
+  int productId;
+  int quantity;
+
   ProductCartModel({
     required this.productId,
     required this.quantity,
   });
-
-  int productId;
-  int quantity;
 
   /// Convert a json to a ProductCartModel object
   factory ProductCartModel.fromJson(Map<String, dynamic> json) =>
