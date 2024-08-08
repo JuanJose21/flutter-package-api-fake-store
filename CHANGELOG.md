@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Fix service login
+
 ## 0.0.5
 
 - Refactor models

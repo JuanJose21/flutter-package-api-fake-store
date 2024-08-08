@@ -19,8 +19,9 @@ class FlutterPackageApiFakeStore {
   /// );
   /// ```
   login(AuthPostModel userCredentials) {
-    return AuthHttpService()
-        .login(AuthPostModel(username: 'admin', password: 'admin'));
+    return AuthHttpService().login(AuthPostModel(
+        username: userCredentials.username,
+        password: userCredentials.password));
   }
 
   /// Get all carts from a user by id
