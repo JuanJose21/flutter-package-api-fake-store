@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Fix service category (update url to get categories)
+
 ## 0.0.6
 
 - Fix service login
