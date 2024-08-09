@@ -18,13 +18,13 @@ class CategoriesHttpService {
   ///   (categories) => print(categories),
   /// );
   /// ```
-  Future<Either<String, List<CategoryEnum>>> getCategories() async {
+  Future<Either<String, List<String>>> getCategories() async {
     try {
       final uri = Uri.parse(baseUrl + endPointProducts + endPointCategories);
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
-        final List<CategoryEnum> categories =
+        final List<String> categories =
             CategoryModel.categoryModelFromJson(response.body);
         return Right(categories);
       } else {

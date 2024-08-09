@@ -14,6 +14,7 @@ class _CategoryProductsScreen extends State<CategoryProductsScreen> {
   final FlutterPackageApiFakeStore flutterPackageApiFakeStore =
       FlutterPackageApiFakeStore();
   List<ProductModel> _categoryItems = [];
+  List<String> _categories = [];
   String? _errorMessage;
   bool _isLoading = false;
   final category = CategoryEnum.electronics; // This category is example
@@ -22,6 +23,33 @@ class _CategoryProductsScreen extends State<CategoryProductsScreen> {
   void initState() {
     super.initState();
     _fetchCategoryItems();
+    _fetchCategories();
+  }
+
+  void _fetchCategories() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    final result = await flutterPackageApiFakeStore.getCategories();
+
+    result.fold(
+      (error) {
+        setState(() {
+          _errorMessage = error;
+        });
+      },
+      (categories) {
+        setState(() {
+          _categories = categories;
+        });
+      },
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   void _fetchCategoryItems() async {
@@ -77,18 +105,35 @@ class _CategoryProductsScreen extends State<CategoryProductsScreen> {
                   ),
                 )
               : _categoryItems.isNotEmpty
-                  ? ListView.builder(
-                      itemCount: _categoryItems.length,
-                      itemBuilder: (context, index) {
-                        final product = _categoryItems[index];
-                        return CardProduct(
-                          title: product.title,
-                          price: product.price.toString(),
-                          image: product.image,
-                          onTap: () => redirectProductScreen(product.id!),
-                        );
-                      },
-                    )
+                  ? Column(children: [
+                      Flexible(
+                        child: ListView.builder(
+                          itemCount: _categories.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "${_categories[index]} - ${categoryValues.map[_categories[index]]}",
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Flexible(
+                          child: ListView.builder(
+                        itemCount: _categoryItems.length,
+                        itemBuilder: (context, index) {
+                          final product = _categoryItems[index];
+                          return CardProduct(
+                            title: product.title,
+                            price: product.price.toString(),
+                            image: product.image,
+                            onTap: () => redirectProductScreen(product.id!),
+                          );
+                        },
+                      ))
+                    ])
                   : const Center(
                       child: Text('No hay productos en el carrito.'),
                     ),
