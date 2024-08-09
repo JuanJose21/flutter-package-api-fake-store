@@ -1,3 +1,7 @@
+## 0.0.8
+
+- Fix service category (update model and fix example)
+
 ## 0.0.7
 
 - Fix service category (update url to get categories)
