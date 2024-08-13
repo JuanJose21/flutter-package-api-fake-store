@@ -61,6 +61,9 @@ void main() async {
     }),
   );
 
+  // Get all products
+  // Return a list of [ProductModel] if success
+  // Return a string if error
   final resultProducts = await flutterPackageApiFakeStore.getProducts();
   resultProducts.fold(
     (error) => print(error),
