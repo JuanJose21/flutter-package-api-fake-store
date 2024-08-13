@@ -1,3 +1,7 @@
+## 0.0.9
+
+- Add documentation to methods and update example
+
 ## 0.0.8
 
 - Fix service category (update model and fix example)

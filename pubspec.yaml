@@ -1,6 +1,6 @@
 name: flutter_package_api_fake_store
 description: 'flutter_package_api_fake_store es un paquete de Flutter para interactuar con el API de fakestoreapi, permitiendo obtener productos, gestionar carritos y usuarios, y mucho más.'
-version: 0.0.8
+version: 0.0.9
 homepage: https://github.com/JuanJose21/flutter-package-api-fake-store
 
 environment:
