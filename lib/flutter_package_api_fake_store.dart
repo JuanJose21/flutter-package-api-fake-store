@@ -12,7 +12,11 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await authHttpService.login(AuthPostModel (username: 'admin', password: 'admin'));
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.login(AuthPostModel(
+  ///   username: 'user1',
+  ///   password: '123456',
+  /// ));
   /// result.fold(
   ///   (error) => print(error),
   ///   (token) => print(token),
@@ -30,7 +34,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await cartsHttpService.getCartByUser('1');
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.getCartByUser('1');
   /// result.fold(
   ///   (error) => print(error),
   ///   (carts) => print(carts),
@@ -46,7 +51,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await cartsHttpService.addUpdateProductCart(idcart, cart);
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.addUpdateProductCart(idcart, cart);
   /// result.fold(
   ///   (error) => print(error),
   ///   (carts) => print(carts),
@@ -61,7 +67,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await categoriesHttpService.getCategories();
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.getCategories();
   /// result.fold(
   ///   (error) => print(error),
   ///   (categories) => print(categories),
@@ -77,7 +84,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await categoriesHttpService.getCategorieProducts(CategoryEnum.electronics);
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.getCategoryProducts(CategoryEnum.electronics);
   /// result.fold(
   ///   (error) => print(error),
   ///   (products) => print(products),
@@ -93,7 +101,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await productsHttpService.getProducts();
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.getProducts();
   /// result.fold(
   ///   (error) => print(error),
   ///   (products) => print(products),
@@ -109,7 +118,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await productsHttpService.getProduct(1);
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.getProduct(1);
   /// result.fold(
   ///   (error) => print(error),
   ///   (product) => print(product),
@@ -125,7 +135,8 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await usersHttpService.getUser('1');
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.getUser(1);
   /// result.fold(
   ///   (error) => print(error),
   ///   (user) => print(user),
@@ -141,20 +152,21 @@ class FlutterPackageApiFakeStore {
   ///
   /// Example:
   /// ```dart
-  /// final result = await usersHttpService.addUser(UserModel(
-  ///   email: 'mail@mail.com'
+  /// final FlutterPackageApiFakeStore flutterPackageApiFakeStore = FlutterPackageApiFakeStore();
+  /// final result = await flutterPackageApiFakeStore.addUser(UserModel(
+  ///   email: 'mail@mail.com',
   ///   username: 'user1',
-  ///   password: '123456'
+  ///   password: '123456',
   ///   name: NameModel(
-  ///     first: 'User',
-  ///     last: 'One',
+  ///     firstname: 'User',
+  ///     lastname: 'One',
   ///   ),
   ///   address: AddressModel(
   ///     city: 'City 1',
   ///     street: 'Street 1',
   ///     number: 1,
   ///     zipcode: 'Zipcode 1',
-  ///     geo: GeoModel(
+  ///     geolocation: GeolocationModel(
   ///       lat: 'Lat 1',
   ///       long: 'Lng 1',
   ///     ),
